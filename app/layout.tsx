@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import React from "react";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-display",
@@ -12,43 +13,107 @@ const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
-const SITE_URL = "https://mikechokki.github.io/lfa-cli-ui";
-const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
-const OG_IMAGE_SQUARE = `${SITE_URL}/og-image-square.jpg`;
-const TITLE = "lfa-cli-ui — Interface Next.js pour configurer vos environnements de développement";
+const DEFAULT_SITE_URL = "https://mikechokki.github.io/lfa-cli-ui";
+
+const getSiteUrl = () => {
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    return process.env.NEXT_PUBLIC_SITE_URL;
+  }
+  if (process.env.NODE_ENV === "production") {
+    return DEFAULT_SITE_URL;
+  }
+  return "http://localhost:3000";
+};
+
+const finalSiteUrl = getSiteUrl();
+const OG_IMAGE = `${finalSiteUrl}/og-image.jpg`;
+const OG_IMAGE_SQUARE = `${finalSiteUrl}/og-image-square.jpg`;
+
+const TITLE = "lfa-cli-ai — CLI pour configurer vos environnements de développement IA";
 const DESCRIPTION =
-  "UI Next.js open-source pour configurer instantanément vos environnements IA (Cursor, VS Code, Windsurf, Antigravity) avec workflows, composants et intégrations. Stack moderne React + TypeScript + Tailwind.";
+  "Configurez instantanément vos environnements de développement IA sur Linux — Antigravity, Cursor, VS Code et Windsurf — avec workflows, règles, 21 MCP skills et serveur MCP portable.";
 
 export const metadata: Metadata = {
-  title: TITLE,
+  metadataBase: new URL(finalSiteUrl),
+  title: {
+    default: TITLE,
+    template: "%s | lfa-cli-ai",
+  },
   description: DESCRIPTION,
-  keywords:
-    "lfa-cli-ui, Next.js UI, React, TypeScript, Tailwind CSS, shadcn/ui, Cursor, VS Code, Windsurf, environnement de développement",
+  keywords: [
+    "lfa-cli-ai",
+    "CLI",
+    "Go",
+    "MCP",
+    "Model Context Protocol",
+    "Cursor",
+    "VS Code",
+    "Windsurf",
+    "Antigravity",
+    "AI development environment",
+    "development setup",
+    "IA",
+    "workflows",
+    "MCP skills",
+  ],
+  authors: [
+    {
+      name: "@Ekim's",
+      url: "https://github.com/MikeCHOKKI",
+    },
+  ],
+  creator: "@Ekim's",
+  publisher: "GitHub",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    url: finalSiteUrl,
+    siteName: "lfa-cli-ai",
     title: TITLE,
     description: DESCRIPTION,
-    url: SITE_URL,
     images: [
       {
         url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "lfa-cli-ui — Interface Next.js pour environnements de développement",
+        alt: "lfa-cli-ai — CLI pour environnements de développement IA",
         type: "image/jpeg",
       },
       {
         url: OG_IMAGE_SQUARE,
         width: 1200,
         height: 1200,
-        alt: "lfa-cli-ui — Interface Next.js",
+        alt: "lfa-cli-ai",
         type: "image/jpeg",
       },
     ],
   },
   twitter: {
+    card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
     images: [OG_IMAGE],
+    creator: "@MikeCHOKKI",
+  },
+  alternates: {
+    canonical: finalSiteUrl,
+    languages: {
+      fr: finalSiteUrl,
+    },
+  },
+  other: {
+    "og:site_name": "lfa-cli-ai",
   },
 };
 
