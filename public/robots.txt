@@ -1,6 +1,4 @@
-# For production deployment, update SITE_URL in the sitemap
 User-agent: *
 Allow: /
 
-# Replace with actual site URL during deployment
-Sitemap: https://mikechokki.github.io/lfa-cli-ai/sitemap.xml
+Sitemap: https://lfa-cli-ui.vercel.app/sitemap.xml

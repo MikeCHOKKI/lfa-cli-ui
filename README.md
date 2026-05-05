@@ -1,6 +1,6 @@
 # lfa-cli-ui — Site vitrine
 
-Site de présentation du CLI [lfa-cli-ai](https://github.com/MikeCHOKKI/lfa-cli-ai), built with Next.js 16.
+Site de présentation du CLI [lfa-cli-ai](https://github.com/MikeCHOKKI/lfa-cli-ai), déployé sur Vercel.
 
 ## Stack
 
@@ -9,6 +9,7 @@ Site de présentation du CLI [lfa-cli-ai](https://github.com/MikeCHOKKI/lfa-cli-
 - **Tailwind CSS v4** — Styling
 - **TypeScript** — Type safety
 - **Lucide React** — Icons
+- **Vercel** — Deployment
 
 ## Développement
 
@@ -29,21 +30,25 @@ npm run build
 npm run start
 ```
 
-## Configuration
+## Déploiement sur Vercel
+
+Le site est automatiquement déployé sur Vercel via GitHub Integration.
 
 ### Variables d'environnement
 
 | Variable | Description | Défaut |
 |----------|-------------|--------|
-| `NEXT_PUBLIC_SITE_URL` | URL du site pour SEO/OG | `http://localhost:3000` |
+| `NEXT_PUBLIC_SITE_URL` | URL du site pour SEO/OG | Auto-détecté via `VERCEL_URL` |
 
-### SEO
+En production, Vercel définit automatiquement `VERCEL_URL`, donc `NEXT_PUBLIC_SITE_URL` n'est généralement pas nécessaire sauf pour un domaine personnalisé.
 
-Le site utilise les métadonnées Open Graph et Twitter Cards pour le partage sur les réseaux sociaux. L'URL du site est configurable via `NEXT_PUBLIC_SITE_URL`.
+## SEO
 
-## Déploiement
-
-Le site est déployé sur GitHub Pages via GitHub Actions. Voir `.github/workflows/`.
+Le site inclut:
+- Métadonnées Open Graph et Twitter Cards
+- sitemap.xml pour Google
+- robots.txt pour les crawlers
+- Images OG pour le partage social
 
 ## Licence
 
