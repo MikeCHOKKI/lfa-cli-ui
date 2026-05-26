@@ -71,7 +71,7 @@ export default function Releases() {
       </div>
       <div className="mt-16 text-center">
         <a
-          href="https://github.com/lfa-cli/lfa-cli-ai/releases"
+          href="https://github.com/MikeCHOKKI/lfa-cli-ai/releases"
           target="_blank" rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-sm text-lfa-text/50 hover:text-lfa-accent transition-colors"
         >

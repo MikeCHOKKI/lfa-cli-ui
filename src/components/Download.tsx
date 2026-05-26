@@ -1,95 +1,62 @@
-import { useState, useEffect } from 'react'
-
-type OSType = 'linux' | 'macos' | 'windows' | 'unknown'
-
-function detectOS(): OSType {
-  const p = navigator.platform.toLowerCase()
-  if (p.includes('linux')) return 'linux'
-  if (p.includes('mac')) return 'macos'
-  if (p.includes('win')) return 'windows'
-  return 'unknown'
-}
-
-const osInfo: Record<OSType, { name: string; icon: string; primary: string; others: string[] }> = {
-  linux: {
-    name: 'Linux',
-    icon: '🐧',
-    primary: 'lfa-cli_1.0.0_amd64.deb',
-    others: ['lfa-cli-1.0.0.x86_64.rpm', 'lfa-cli-linux-static.tar.gz'],
+const installMethods = [
+  {
+    title: 'Go install',
+    cmd: 'go install github.com/MikeCHOKKI/lfa-cli-ai@latest',
+    note: 'Nécessite Go 1.22+',
+    icon: (
+      <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+      </svg>
+    ),
   },
-  macos: {
-    name: 'macOS',
-    icon: '🍎',
-    primary: 'lfa-cli-1.0.0.dmg',
-    others: ['lfa-cli-1.0.0-arm64.dmg', 'lfa-cli-macos.tar.gz'],
+  {
+    title: 'Build from source',
+    cmd: 'git clone https://github.com/MikeCHOKKI/lfa-cli-ai.git && cd lfa-cli-ai && make build',
+    note: 'Binaire dans bin/lfa',
+    icon: (
+      <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+      </svg>
+    ),
   },
-  windows: {
-    name: 'Windows',
-    icon: '🪟',
-    primary: 'lfa-cli-1.0.0-x64.exe',
-    others: ['lfa-cli-1.0.0-x86.exe', 'lfa-cli-win.zip'],
-  },
-  unknown: {
-    name: 'Système détecté',
-    icon: '💻',
-    primary: 'lfa-cli-1.0.0.tar.gz',
-    others: [],
-  },
-}
+]
 
 export default function Download() {
-  const [os, setOs] = useState<OSType>('unknown')
-
-  useEffect(() => {
-    setOs(detectOS())
-  }, [])
-
-  const info = osInfo[os]
-
   return (
     <section id="download" className="w-full max-w-6xl mx-auto px-4 py-24">
       <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-lfa-accent">
-        Téléchargement
+        Installation
       </h2>
-      <p className="text-lfa-text/60 text-center mb-12 max-w-xl mx-auto">
-        Détecté : {info.icon} {info.name}
+      <p className="text-lfa-text/60 text-center mb-16 max-w-xl mx-auto">
+        Deux méthodes pour installer LFA CLI sur votre machine.
       </p>
 
-      <div className="flex flex-col items-center gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {installMethods.map((m, i) => (
+          <div key={i} className="bg-lfa-surface border border-lfa-text/10 rounded-xl p-6 hover:border-lfa-accent/40 transition-all duration-300 flex flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <div className="text-lfa-accent">{m.icon}</div>
+              <h3 className="text-base font-semibold text-lfa-text">{m.title}</h3>
+            </div>
+            <div className="bg-lfa-bg border border-lfa-text/10 rounded-lg p-4 font-mono text-xs md:text-sm text-lfa-accent overflow-x-auto">
+              <span className="text-lfa-text/40">$ </span>{m.cmd}
+            </div>
+            <p className="text-xs text-lfa-text/40">{m.note}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-12 text-center">
         <a
-          href="https://github.com/lfa-cli/lfa-cli-ai/releases"
+          href="https://github.com/MikeCHOKKI/lfa-cli-ai/releases"
           target="_blank" rel="noopener noreferrer"
-          className="group relative inline-flex items-center gap-3 bg-lfa-accent text-lfa-bg font-semibold px-8 py-4 rounded-xl text-lg hover:brightness-110 transition-all duration-300 animate-pulse-glow"
+          className="inline-flex items-center gap-2 text-sm text-lfa-text/50 hover:text-lfa-accent transition-colors"
         >
-          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0l-3-3m3 3l3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
           </svg>
-          Télécharger pour {info.name}
-          <span className="text-xs text-lfa-bg/70 ml-1">({info.primary})</span>
+          Binaires précompilés — bientôt disponibles
         </a>
-
-        <div className="w-full max-w-lg">
-          <p className="text-xs text-lfa-text/40 mb-3 text-center">Autres formats disponibles</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-            {info.others.map((f) => (
-              <a
-                key={f}
-                href="https://github.com/lfa-cli/lfa-cli-ai/releases" target="_blank" rel="noopener noreferrer"
-                className="text-center text-xs bg-lfa-surface border border-lfa-text/10 rounded-lg px-3 py-2 text-lfa-text/60 hover:text-lfa-accent hover:border-lfa-accent/40 transition-all duration-200"
-              >
-                {f}
-              </a>
-            ))}
-          </div>
-        </div>
-
-        <div className="w-full max-w-lg mt-8">
-          <p className="text-xs text-lfa-text/40 mb-2 text-center">Ou via curl</p>
-          <div className="bg-lfa-surface border border-lfa-text/10 rounded-lg p-4 font-mono text-xs md:text-sm text-lfa-accent overflow-x-auto">
-            <span className="text-lfa-text/40">$ </span>
-            curl -fsSL https://get.lfa-cli.dev | sh
-          </div>
-        </div>
       </div>
     </section>
   )
