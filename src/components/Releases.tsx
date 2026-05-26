@@ -21,7 +21,7 @@ export default function Releases() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch(`https://api.github.com/repos/${REPO}/releases`)
+    fetch('https://api.github.com/repos/MikeCHOKKI/lfa-cli-ai/releases')
       .then((r) => r.json())
       .then((data) => {
         if (Array.isArray(data)) setReleases(data as Release[])

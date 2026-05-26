@@ -47,7 +47,7 @@ function App() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-lfa-text/30">
           <span>LFA CLI — Open Source (MIT)</span>
           <div className="flex gap-4">
-            <a href="https://github.com/lfa-cli/lfa-cli-ai" target="_blank" rel="noopener noreferrer" className="hover:text-lfa-accent transition-colors">GitHub</a>
+            <a href="https://github.com/MikeCHOKKI/lfa-cli-ai" target="_blank" rel="noopener noreferrer" className="hover:text-lfa-accent transition-colors">GitHub</a>
             <a href="https://lfa-cli.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-lfa-accent transition-colors">Site</a>
           </div>
           <span>Construit avec OpenCode</span>

@@ -1,5 +1,3 @@
-const REPO = 'github.com/lfa-cli/lfa-cli-ai'
-
 const installMethods = [
   {
     title: 'Quick install (curl)',
@@ -14,7 +12,7 @@ const installMethods = [
   },
   {
     title: 'Go install',
-    cmd: `go install ${REPO}@latest`,
+    cmd: 'go install github.com/lfa-cli/lfa-cli-ai@latest',
     note: 'Nécessite Go 1.22+',
     highlight: false,
     icon: (
@@ -25,7 +23,7 @@ const installMethods = [
   },
   {
     title: 'Build from source',
-    cmd: `git clone https://${REPO}.git && cd lfa-cli-ai && make build`,
+    cmd: 'git clone https://github.com/lfa-cli/lfa-cli-ai.git && cd lfa-cli-ai && make build',
     note: 'Binaire dans bin/lfa',
     highlight: false,
     icon: (
@@ -72,7 +70,7 @@ export default function Download() {
 
       <div className="mt-16 text-center">
         <a
-          href={`https://${REPO}/releases`}
+          href="https://github.com/MikeCHOKKI/lfa-cli-ai/releases"
           target="_blank" rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-sm text-lfa-text/50 hover:text-lfa-accent transition-colors"
         >
