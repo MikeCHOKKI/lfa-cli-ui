@@ -1,6 +1,7 @@
 import Terminal from './components/Terminal'
 import Features from './components/Features'
 import Download from './components/Download'
+import Releases from './components/Releases'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           </span>
           <div className="flex gap-6 text-sm text-lfa-text/60">
             <a href="#features" className="hover:text-lfa-accent transition-colors">Fonctionnalités</a>
+            <a href="#releases" className="hover:text-lfa-accent transition-colors">Versions</a>
             <a href="#download" className="hover:text-lfa-accent transition-colors">Télécharger</a>
           </div>
         </nav>
@@ -32,6 +34,7 @@ function App() {
         </section>
 
         <Features />
+        <Releases />
         <Download />
       </main>
 
