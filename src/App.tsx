@@ -22,10 +22,15 @@ function App() {
       <main>
         <section className="pt-32 pb-16 px-4 text-center">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">
-              <span className="text-lfa-accent">LFA</span>{' '}
-              <span className="text-lfa-text">CLI</span>
-            </h1>
+            <div className="flex items-center justify-center gap-3 mb-2">
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
+                <span className="text-lfa-accent">LFA</span>{' '}
+                <span className="text-lfa-text">CLI</span>
+              </h1>
+              <span className="text-xs font-semibold bg-lfa-accent/20 text-lfa-accent border border-lfa-accent/30 px-2.5 py-0.5 rounded-full mt-2">
+                v0.1.0
+              </span>
+            </div>
             <p className="text-lg md:text-xl text-lfa-text/60 mb-10">
               Automatisez votre environnement OpenCode
             </p>
