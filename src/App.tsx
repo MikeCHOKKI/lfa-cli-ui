@@ -42,9 +42,9 @@ function App() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-lfa-text/30">
           <span>LFA CLI — Open Source (MIT)</span>
           <div className="flex gap-4">
-            <a href="#" className="hover:text-lfa-accent transition-colors">GitHub</a>
-            <a href="#" className="hover:text-lfa-accent transition-colors">Documentation</a>
-            <a href="#" className="hover:text-lfa-accent transition-colors">npm</a>
+            <a href="https://github.com/lfa-cli/lfa-cli-ai" target="_blank" rel="noopener noreferrer" className="hover:text-lfa-accent transition-colors">GitHub</a>
+            <a href="https://github.com/lfa-cli/lfa-cli-ai#readme" target="_blank" rel="noopener noreferrer" className="hover:text-lfa-accent transition-colors">Documentation</a>
+            <a href="https://www.npmjs.com/package/@lfa-cli/setup" target="_blank" rel="noopener noreferrer" className="hover:text-lfa-accent transition-colors">npm</a>
           </div>
           <span>Construit avec OpenCode</span>
         </div>

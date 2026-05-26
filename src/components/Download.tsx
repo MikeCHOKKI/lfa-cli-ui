@@ -57,7 +57,8 @@ export default function Download() {
 
       <div className="flex flex-col items-center gap-8">
         <a
-          href="#"
+          href="https://github.com/lfa-cli/lfa-cli-ai/releases"
+          target="_blank" rel="noopener noreferrer"
           className="group relative inline-flex items-center gap-3 bg-lfa-accent text-lfa-bg font-semibold px-8 py-4 rounded-xl text-lg hover:brightness-110 transition-all duration-300 animate-pulse-glow"
         >
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -73,7 +74,7 @@ export default function Download() {
             {info.others.map((f) => (
               <a
                 key={f}
-                href="#"
+                href="https://github.com/lfa-cli/lfa-cli-ai/releases" target="_blank" rel="noopener noreferrer"
                 className="text-center text-xs bg-lfa-surface border border-lfa-text/10 rounded-lg px-3 py-2 text-lfa-text/60 hover:text-lfa-accent hover:border-lfa-accent/40 transition-all duration-200"
               >
                 {f}
