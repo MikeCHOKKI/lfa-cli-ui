@@ -1,7 +1,9 @@
+const REPO = 'github.com/lfa-cli/lfa-cli-ai'
+
 const installMethods = [
   {
     title: 'Quick install (curl)',
-    cmd: 'curl -fsSL https://raw.githubusercontent.com/MikeCHOKKI/lfa-cli-ai/main/install.sh | sh',
+    cmd: 'curl -fsSL https://lfa-cli.vercel.app/install.sh | sh',
     note: 'Détecte OS/arch, télécharge le binaire, ajoute au PATH',
     highlight: true,
     icon: (
@@ -12,7 +14,7 @@ const installMethods = [
   },
   {
     title: 'Go install',
-    cmd: 'go install github.com/MikeCHOKKI/lfa-cli-ai@latest',
+    cmd: `go install ${REPO}@latest`,
     note: 'Nécessite Go 1.22+',
     highlight: false,
     icon: (
@@ -23,7 +25,7 @@ const installMethods = [
   },
   {
     title: 'Build from source',
-    cmd: 'git clone https://github.com/MikeCHOKKI/lfa-cli-ai.git && cd lfa-cli-ai && make build',
+    cmd: `git clone https://${REPO}.git && cd lfa-cli-ai && make build`,
     note: 'Binaire dans bin/lfa',
     highlight: false,
     icon: (
@@ -70,14 +72,14 @@ export default function Download() {
 
       <div className="mt-16 text-center">
         <a
-          href="https://github.com/MikeCHOKKI/lfa-cli-ai/releases"
+          href={`https://${REPO}/releases`}
           target="_blank" rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-sm text-lfa-text/50 hover:text-lfa-accent transition-colors"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0l-3-3m3 3l3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
           </svg>
-          Voir les releases sur GitHub
+          Voir les releases
         </a>
       </div>
     </section>
