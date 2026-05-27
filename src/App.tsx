@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import { useState } from 'react'
 import { Check, ArrowRight } from 'lucide-react'
 import Navbar from './components/Navbar'
@@ -136,6 +137,8 @@ function App() {
           </div>
         </div>
       </footer>
+
+      <Analytics />
     </div>
   )
 }
