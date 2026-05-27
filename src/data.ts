@@ -92,6 +92,13 @@ export const CLI_COMMANDS_DOC: CLICommandDoc[] = [
     badge: 'Interactive'
   },
   {
+    name: 'lfa info',
+    args: '',
+    description: 'Affiche les agents et skills déployés dans votre configuration OpenCode.',
+    example: 'lfa info',
+    badge: 'Core'
+  },
+  {
     name: 'lfa version',
     args: '',
     description: 'Affiche la version installée de LFA CLI.',
