@@ -66,19 +66,6 @@ export const TERMINAL_PRESETS: TerminalPreset[] = [
       { type: 'output', text: '└─────────────────────────────────────┘', delay: 150 },
       { type: 'success', text: '🚀 Dashboard prêt. Tapez q pour quitter.', delay: 400 }
     ]
-  },
-  {
-    id: 'undo',
-    name: '⏪ Restaurer (lfa undo)',
-    command: 'lfa undo',
-    description: 'Annule la dernière modification et restaure la configuration précédente.',
-    steps: [
-      { type: 'input', text: 'lfa undo', delay: 300 },
-      { type: 'spinner', text: 'Recherche de la sauvegarde LFA...', delay: 700 },
-      { type: 'thinking', text: 'Restauration de la version sauvegardée...', delay: 900 },
-      { type: 'file-change', text: '⏪ Restauration : .config/opencode/opencode.jsonc', delay: 300, filePath: '.config/opencode/opencode.jsonc', fileAction: 'modify' },
-      { type: 'success', text: '✅ Configuration restaurée. Aucun conflit git.', delay: 400 }
-    ]
   }
 ]
 
@@ -92,43 +79,22 @@ export const CLI_COMMANDS_DOC: CLICommandDoc[] = [
   },
   {
     name: 'lfa setup',
-    args: '[--ollama] [--force]',
+    args: '[--ollama] [--dry-run]',
     description: 'Déploie la configuration complète d\'OpenCode avec agents, skills et fournisseur LLM.',
     example: 'lfa setup --ollama',
     badge: 'Core'
   },
   {
     name: 'lfa dashboard',
-    args: '',
+    args: '[-y]',
     description: 'Lance l\'interface interactive TUI pour gérer et monitorer votre environnement.',
     example: 'lfa dashboard',
-    badge: 'AI'
-  },
-  {
-    name: 'lfa status',
-    args: '',
-    description: 'Affiche l\'état actuel de la configuration et des composants OpenCode.',
-    example: 'lfa status',
-    badge: 'Core'
-  },
-  {
-    name: 'lfa undo',
-    args: '',
-    description: 'Restaure la dernière version sauvegardée de la configuration.',
-    example: 'lfa undo',
-    badge: 'Git'
-  },
-  {
-    name: 'lfa init',
-    args: '"<chemin>"',
-    description: 'Initialise un espace de travail LFA dans un répertoire existant.',
-    example: 'lfa init "./mon-projet"',
-    badge: 'Config'
+    badge: 'Interactive'
   },
   {
     name: 'lfa version',
     args: '',
-    description: 'Affiche la version installée de LFA CLI et les dépendances.',
+    description: 'Affiche la version installée de LFA CLI.',
     example: 'lfa version',
     badge: 'Core'
   }
@@ -148,7 +114,7 @@ export const FAQ_DATA: FAQItem[] = [
   {
     category: 'Technique',
     question: "LFA CLI modifie-t-il ma configuration OpenCode existante ?",
-    answer: "Oui, LFA CLI enrichit votre fichier `opencode.jsonc` avec 22 agents spécialisés et 18 skills. Il conserve vos réglages existants et ajoute les nouvelles configurations. Utilisez `lfa undo` pour revenir à l'état précédent."
+    answer: "Oui, LFA CLI enrichit votre fichier `opencode.jsonc` avec 22 agents spécialisés et 18 skills. Il conserve vos réglages existants et ajoute les nouvelles configurations. Utilisez `lfa setup --dry-run` pour prévisualiser les changements sans les appliquer."
   },
   {
     category: 'Technique',

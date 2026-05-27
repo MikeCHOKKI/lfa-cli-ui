@@ -1,5 +1,5 @@
 import {
-  Bot, RefreshCw, Zap, Cpu, Code2, Lock, GitFork, FileType
+  Bot, Zap, Cpu, Code2, Lock, GitFork, FileType
 } from 'lucide-react'
 import { motion } from 'motion/react'
 
@@ -121,20 +121,20 @@ export default function BentoFeatures() {
           >
             <div className="flex-1">
               <div className="w-10 h-10 rounded-lg bg-lfa-accent/10 border border-lfa-accent/20 text-lfa-accent flex items-center justify-center mb-4 md:mb-0">
-                <RefreshCw className="w-5 h-5 animate-spin" />
+                <Zap className="w-5 h-5" />
               </div>
               <div className="mt-3 md:mt-4">
-                <h4 className="text-base font-bold text-lfa-text text-left font-sans">Restauration instantanée (lfa undo)</h4>
+                <h4 className="text-base font-bold text-lfa-text text-left font-sans">Mode non-interactif (lfa setup -y)</h4>
                 <p className="text-lfa-text/60 text-xs mt-1.5 text-left leading-relaxed max-w-lg">
-                  Une modification ne vous convient pas ? Exécutez `lfa undo` pour restaurer la configuration précédente sans casser votre historique.
+                  Automatisez le déploiement dans vos scripts CI/CD ou vos provisioning. Une seule commande, zéro interaction requise.
                 </p>
               </div>
             </div>
 
             <div className="bg-lfa-bg p-3 rounded-xl border border-lfa-accent/20 font-mono text-[10px] text-lfa-text/60 w-full md:w-56 text-left self-end md:self-auto shadow-inner">
-              <div className="text-lfa-accent font-bold">$ lfa undo</div>
-              <div className="text-lfa-text/40 mt-1">✓ Restauration config...</div>
-              <div className="text-lfa-success mt-0.5">✓ Configuration restaurée.</div>
+              <div className="text-lfa-accent font-bold">$ lfa setup -y</div>
+              <div className="text-lfa-text/40 mt-1">✓ OpenCode configured</div>
+              <div className="text-lfa-success mt-0.5">✓ Setup complete.</div>
             </div>
           </motion.div>
         </motion.div>

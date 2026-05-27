@@ -26,7 +26,7 @@ export default function Releases() {
       .then((data) => {
         if (Array.isArray(data)) setReleases(data as Release[])
       })
-      .catch(() => {})
+      .catch((err) => console.error('Failed to fetch releases:', err))
       .finally(() => setLoading(false))
   }, [])
 
