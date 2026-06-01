@@ -10,11 +10,50 @@ type Release = {
   html_url: string
 }
 
+const EMOJI: Record<string, string> = {
+  feat: '🚀',
+  fix: '🐛',
+  docs: '📚',
+  secu: '🔒',
+  security: '🔒',
+  perf: '⚡',
+  refactor: '♻️',
+  test: '🧪',
+}
+
+const TYPES = '(feat|fix|docs|secu|security|perf|refactor|test)'
+
 function extractChanges(body: string): string[] {
   return body
     .split('\n')
     .filter((l) => l.startsWith('-') || l.startsWith('*'))
-    .map((l) => l.replace(/^[-*]\s*/, ''))
+    .map((l) => l.replace(/^[-*]\s*/, '').trim())
+    .filter((l) => {
+      if (!l) return false
+      if (/Trigger release-please/i.test(l)) return false
+      if (/^chore\b/i.test(l)) return false
+      if (/^fix\(ci\)/i.test(l)) return false
+      return true
+    })
+    .map((l) => {
+      // type(scope): message  →  🚀 **scope** : message
+      let m = l.match(new RegExp(`^${TYPES}\\(([^)]+)\\):\\s*(.+)`, 'i'))
+      if (m) return `${EMOJI[m[1].toLowerCase()] ?? '•'} **${m[2]}** : ${m[3]}`
+
+      // type(scope) - message  →  🚀 **(scope)** message
+      m = l.match(new RegExp(`^${TYPES}\\(([^)]+)\\)\\s*[-–—]\\s*(.+)`, 'i'))
+      if (m) return `${EMOJI[m[1].toLowerCase()] ?? '•'} **(${m[2]})** ${m[3]}`
+
+      // [type] - message  →  🚀 message
+      m = l.match(new RegExp(`^\\[${TYPES}\\]\\s*[-–—]\\s*(.+)`, 'i'))
+      if (m) return `${EMOJI[m[1].toLowerCase()] ?? '•'} ${m[2]}`
+
+      // type: message  →  🚀 message
+      m = l.match(new RegExp(`^${TYPES}:\\s*(.+)`, 'i'))
+      if (m) return `${EMOJI[m[1].toLowerCase()] ?? '•'} ${m[2]}`
+
+      return l
+    })
 }
 
 export default function Releases() {

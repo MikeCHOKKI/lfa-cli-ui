@@ -24,7 +24,7 @@ export function useVersion() {
           (f: { path: string }) => f.path.startsWith('data/agents/') && f.path.endsWith('.md')
         ).length
         const skillCount = data.tree.filter(
-          (f: { path: string; type: string }) => f.path.startsWith('data/skills/') && f.type === 'tree'
+          (f: { path: string; type: string }) => /^data\/skills\/[^/]+$/.test(f.path) && f.type === 'tree'
         ).length
         if (agentCount) setAgents(agentCount)
         if (skillCount) setSkills(skillCount)
