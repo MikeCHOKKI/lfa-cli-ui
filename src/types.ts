@@ -28,7 +28,7 @@ export interface CLICommandDoc {
   args: string
   description: string
   example: string
-  badge: 'Core' | 'AI' | 'Git' | 'Config'
+  badge: 'Core' | 'AI' | 'Git' | 'Config' | 'Interactive'
 }
 
 export interface FAQItem {
