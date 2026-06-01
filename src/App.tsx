@@ -8,8 +8,10 @@ import CommandCheatsheet from './components/CommandCheatsheet'
 import Download from './components/Download'
 import Releases from './components/Releases'
 import FAQ from './components/FAQ'
+import { useVersion } from './useVersion'
 
 function App() {
+  const version = useVersion()
   const [copied, setCopied] = useState(false)
 
   const handleCopyInstall = () => {
@@ -31,7 +33,7 @@ function App() {
         <div className="relative z-10 max-w-4xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-lfa-bg border border-lfa-accent/30 text-xs text-lfa-text/60 font-mono mb-6">
             <span className="flex h-1.5 w-1.5 rounded-full bg-lfa-accent shadow-[0_0_8px_rgba(88,166,255,0.8)] animate-pulse" />
-            <span className="text-lfa-accent">Installateur OpenCode — v0.1.0</span>
+            <span className="text-lfa-accent">Installateur OpenCode — {version}</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-lfa-text leading-tight font-sans text-center">
@@ -133,7 +135,7 @@ function App() {
             <a href="https://github.com/MikeCHOKKI/lfa-cli-ai" target="_blank" rel="noopener noreferrer" className="hover:text-lfa-accent transition-colors">GitHub</a>
             <a href="https://lfa-cli.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-lfa-accent transition-colors">Site</a>
             <span className="text-lfa-text/20">|</span>
-            <span>v0.1.0</span>
+            <span>{version}</span>
           </div>
         </div>
       </footer>

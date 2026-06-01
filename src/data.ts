@@ -57,7 +57,7 @@ export const TERMINAL_PRESETS: TerminalPreset[] = [
       { type: 'spinner', text: 'Démarrage du dashboard interactif...', delay: 600 },
       { type: 'thinking', text: 'Initialisation du TUI avec Bubbletea...', delay: 800 },
       { type: 'output', text: '┌─────────────────────────────────────┐', delay: 150 },
-      { type: 'output', text: '│  LFA CLI - DASHBOARD v0.1.0         │', delay: 150 },
+      { type: 'output', text: '│  LFA CLI - DASHBOARD {VERSION}        │', delay: 150 },
       { type: 'output', text: '├─────────────────────────────────────┤', delay: 150 },
       { type: 'output', text: '│  ✓ OpenCode: configuré              │', delay: 150 },
       { type: 'output', text: ' ' + '│  ✓ Ollama: connecté (mistral:7b)      │', delay: 150 },

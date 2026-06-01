@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useVersion } from '../useVersion'
 
 const REPO = 'lfa-cli/lfa-cli-ai'
 
@@ -17,6 +18,7 @@ function extractChanges(body: string): string[] {
 }
 
 export default function Releases() {
+  const version = useVersion()
   const [releases, setReleases] = useState<Release[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -46,8 +48,8 @@ export default function Releases() {
       {!loading && releases.length === 0 && (
         <div className="text-center">
           <div className="inline-flex items-center gap-2 bg-lfa-accent/10 border border-lfa-accent/30 rounded-xl px-6 py-4 mb-8">
-            <span className="text-lfa-accent font-bold text-lg">v0.1.0</span>
-            <span className="text-xs bg-lfa-accent/20 text-lfa-accent px-2 py-0.5 rounded-full">Initial</span>
+            <span className="text-lfa-accent font-bold text-lg">{version}</span>
+            <span className="text-xs bg-lfa-accent/20 text-lfa-accent px-2 py-0.5 rounded-full">Latest</span>
           </div>
           <p className="text-sm text-lfa-text/60 mb-6 max-w-lg mx-auto">
             Première version de LFA CLI. Une release officielle sera créée prochainement.

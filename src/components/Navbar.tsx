@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { Menu, X, ArrowRight, Check, Sparkles } from 'lucide-react'
 import { motion } from 'motion/react'
+import { useVersion } from '../useVersion'
 
 export default function Navbar() {
+  const version = useVersion()
   const [isOpen, setIsOpen] = useState(false)
   const [copied, setCopied] = useState(false)
 
@@ -21,7 +23,7 @@ export default function Navbar() {
             <span className="font-mono text-sm font-bold tracking-widest text-lfa-accent italic flex items-center gap-1.5">
               LFA CLI <span className="text-lfa-text/30 font-normal select-none">//</span> SYSTEM
               <span className="text-[10px] font-sans font-normal px-2 py-0.2 rounded-full bg-lfa-accent/20 text-lfa-accent border border-lfa-accent/30">
-                v0.1.0
+                {version}
               </span>
             </span>
           </div>

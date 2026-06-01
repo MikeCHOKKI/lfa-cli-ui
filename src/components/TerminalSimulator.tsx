@@ -6,8 +6,10 @@ import {
 import { motion } from 'motion/react'
 import { TERMINAL_PRESETS, INITIAL_FILE_TREE } from '../data'
 import { TerminalStep, FileItem } from '../types'
+import { useVersion } from '../useVersion'
 
 export default function TerminalSimulator() {
+  const version = useVersion()
   const [activePresetId, setActivePresetId] = useState('doctor')
   const [isPlaying, setIsPlaying] = useState(false)
   const [logs, setLogs] = useState<TerminalStep[]>([])
@@ -17,6 +19,8 @@ export default function TerminalSimulator() {
   const [showPromptCursor, setShowPromptCursor] = useState(true)
   const [fileTree, setFileTree] = useState<FileItem[]>(INITIAL_FILE_TREE)
   const [customInput, setCustomInput] = useState('')
+
+  const t = (text: string) => text.replace(/\{VERSION\}/g, version)
 
   const terminalScreenRef = useRef<HTMLDivElement>(null)
   const activePreset = TERMINAL_PRESETS.find(p => p.id === activePresetId) || TERMINAL_PRESETS[0]
@@ -334,7 +338,7 @@ export default function TerminalSimulator() {
             className="flex-1 bg-lfa-bg/90 border-x border-b border-lfa-accent/20 p-5 rounded-b-2xl font-mono text-xs/relaxed text-lfa-text overflow-y-auto"
           >
             <div className="text-lfa-text/30 mb-2 font-mono">
-              # LFA CLI v0.1.0 — Installateur OpenCode<br />
+              # LFA CLI {version} — Installateur OpenCode<br />
               # Cliquez sur "Exécuter" ou tapez une instruction ci-dessous.
             </div>
 
@@ -363,7 +367,7 @@ export default function TerminalSimulator() {
                       ) : (
                         <Check className="w-3.5 h-3.5 text-lfa-accent" />
                       )}
-                      <span>{step.text}</span>
+                      <span>{t(step.text)}</span>
                     </div>
                   )
                 }
@@ -372,7 +376,7 @@ export default function TerminalSimulator() {
                   return (
                     <div key={idx} className="flex items-center gap-2 text-lfa-text/40 italic">
                       <span>🤖</span>
-                      <span>{step.text}</span>
+                      <span>{t(step.text)}</span>
                     </div>
                   )
                 }
@@ -380,7 +384,7 @@ export default function TerminalSimulator() {
                 if (step.type === 'file-change') {
                   return (
                     <div key={idx} className="flex items-center gap-1.5 text-lfa-accent font-bold font-mono pl-3">
-                      <span>{step.text}</span>
+                      <span>{t(step.text)}</span>
                     </div>
                   )
                 }
@@ -389,14 +393,14 @@ export default function TerminalSimulator() {
                   return (
                     <div key={idx} className="mt-2 text-lfa-success font-bold flex items-center gap-1.5">
                       <CheckCircle2 className="w-4 h-4 text-lfa-success" />
-                      <span>{step.text}</span>
+                      <span>{t(step.text)}</span>
                     </div>
                   )
                 }
 
                 return (
                   <div key={idx} className="whitespace-pre-wrap text-lfa-text/80">
-                    {step.text}
+                    {t(step.text)}
                   </div>
                 )
               })}
