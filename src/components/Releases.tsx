@@ -18,7 +18,7 @@ function extractChanges(body: string): string[] {
 }
 
 export default function Releases() {
-  const version = useVersion()
+  const { version } = useVersion()
   const [releases, setReleases] = useState<Release[]>([])
   const [loading, setLoading] = useState(true)
 

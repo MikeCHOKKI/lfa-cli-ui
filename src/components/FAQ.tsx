@@ -2,8 +2,13 @@ import { useState } from 'react'
 import { FAQ_DATA } from '../data'
 import { ChevronDown, HelpCircle, Sparkles } from 'lucide-react'
 import { motion, AnimatePresence } from 'motion/react'
+import { useVersion } from '../useVersion'
 
 export default function FAQ() {
+  const { agents, skills } = useVersion()
+  const resolve = (text: string) => text
+    .replace(/\{AGENTS\}/g, String(agents))
+    .replace(/\{SKILLS\}/g, String(skills))
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   const toggleAccordion = (index: number) => {
@@ -59,7 +64,7 @@ export default function FAQ() {
                       transition={{ duration: 0.25, ease: 'easeInOut' }}
                     >
                       <div className="px-5 pb-5 pt-1 text-lfa-text/60 text-xs/relaxed border-t border-lfa-accent/20 bg-lfa-bg/10 text-left">
-                        {item.answer}
+                        {resolve(item.answer)}
                       </div>
                     </motion.div>
                   )}

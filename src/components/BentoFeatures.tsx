@@ -2,8 +2,10 @@ import {
   Bot, Zap, Cpu, Code2, Lock, GitFork, FileType
 } from 'lucide-react'
 import { motion } from 'motion/react'
+import { useVersion } from '../useVersion'
 
 export default function BentoFeatures() {
+  const { agents, skills } = useVersion()
   const containerVariants = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.1 } }
@@ -53,7 +55,7 @@ export default function BentoFeatures() {
                 Analyse système et déploiement automatisé
               </h3>
               <p className="text-lfa-text/60 text-sm mt-3 text-left max-w-xl leading-relaxed">
-                LFA CLI scanne votre système, détecte l'OS, localise OpenCode, vérifie Ollama, puis déploie 22 agents et 18 skills prêts à l'emploi. Aucune configuration manuelle.
+                LFA CLI scanne votre système, détecte l'OS, localise OpenCode, vérifie Ollama, puis déploie {agents} agents et {skills} skills prêts à l'emploi. Aucune configuration manuelle.
               </p>
             </div>
 
@@ -78,7 +80,7 @@ export default function BentoFeatures() {
               <Zap className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-base font-bold text-lfa-text text-left">22 agents embarqués</h4>
+              <h4 className="text-base font-bold text-lfa-text text-left">{agents} agents embarqués</h4>
               <p className="text-lfa-text/60 text-xs mt-2 text-left leading-relaxed">
                 Agents spécialisés préconfigurés : code, design, documentation, analyse, sécurité et plus.
               </p>
@@ -93,7 +95,7 @@ export default function BentoFeatures() {
               <Lock className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-base font-bold text-lfa-text text-left">18 skills inclus</h4>
+              <h4 className="text-base font-bold text-lfa-text text-left">{skills} skills inclus</h4>
               <p className="text-lfa-text/60 text-xs mt-2 text-left leading-relaxed">
                 Compétences prêtes à l'emploi : génération de code, refactoring, débogage, revue de code.
               </p>

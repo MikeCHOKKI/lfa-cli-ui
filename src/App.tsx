@@ -11,7 +11,7 @@ import FAQ from './components/FAQ'
 import { useVersion } from './useVersion'
 
 function App() {
-  const version = useVersion()
+  const { version, agents, skills } = useVersion()
   const [copied, setCopied] = useState(false)
 
   const handleCopyInstall = () => {
@@ -44,7 +44,7 @@ function App() {
           </h1>
 
           <p className="text-lfa-text/60 text-base sm:text-lg mt-6 max-w-3xl mx-auto font-sans leading-relaxed text-center">
-            LFA CLI analyse votre système, détecte OpenCode et Ollama, puis déploie 22 agents et 18 skills prêts à l'emploi. Une commande suffit.
+            LFA CLI analyse votre système, détecte OpenCode et Ollama, puis déploie {agents} agents et {skills} skills prêts à l'emploi. Une commande suffit.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">

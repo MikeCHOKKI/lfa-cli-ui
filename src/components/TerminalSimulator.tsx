@@ -9,7 +9,7 @@ import { TerminalStep, FileItem } from '../types'
 import { useVersion } from '../useVersion'
 
 export default function TerminalSimulator() {
-  const version = useVersion()
+  const { version, agents, skills } = useVersion()
   const [activePresetId, setActivePresetId] = useState('doctor')
   const [isPlaying, setIsPlaying] = useState(false)
   const [logs, setLogs] = useState<TerminalStep[]>([])
@@ -20,7 +20,10 @@ export default function TerminalSimulator() {
   const [fileTree, setFileTree] = useState<FileItem[]>(INITIAL_FILE_TREE)
   const [customInput, setCustomInput] = useState('')
 
-  const t = (text: string) => text.replace(/\{VERSION\}/g, version)
+  const t = (text: string) => text
+    .replace(/\{VERSION\}/g, version)
+    .replace(/\{AGENTS\}/g, String(agents))
+    .replace(/\{SKILLS\}/g, String(skills))
 
   const terminalScreenRef = useRef<HTMLDivElement>(null)
   const activePreset = TERMINAL_PRESETS.find(p => p.id === activePresetId) || TERMINAL_PRESETS[0]

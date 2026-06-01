@@ -4,7 +4,7 @@ import { motion } from 'motion/react'
 import { useVersion } from '../useVersion'
 
 export default function Navbar() {
-  const version = useVersion()
+  const { version, agents, skills } = useVersion()
   const [isOpen, setIsOpen] = useState(false)
   const [copied, setCopied] = useState(false)
 
@@ -52,11 +52,11 @@ export default function Navbar() {
               </div>
               <div className="flex flex-col items-end">
                 <span className="text-lfa-text/30 text-[9px] font-bold">AGENTS</span>
-                <span className="text-lfa-accent font-mono">22 ACTIFS</span>
+                <span className="text-lfa-accent font-mono">{agents} ACTIFS</span>
               </div>
               <div className="flex flex-col items-end">
                 <span className="text-lfa-text/30 text-[9px] font-bold">SKILLS</span>
-                <span className="text-lfa-text font-mono">18</span>
+                <span className="text-lfa-text font-mono">{skills}</span>
               </div>
             </div>
 
@@ -118,7 +118,7 @@ export default function Navbar() {
           <div className="pt-4 border-t border-lfa-accent/20 flex flex-col gap-3">
             <div className="flex items-center justify-between text-[11px] text-lfa-text/40 font-mono px-3">
               <span>STATUS: <span className="text-lfa-success">ONLINE</span></span>
-              <span>AGENTS: <span className="text-lfa-accent">22</span></span>
+              <span>AGENTS: <span className="text-lfa-accent">{agents}</span></span>
             </div>
             <button
               onClick={handleCopyInstall}

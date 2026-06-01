@@ -25,8 +25,8 @@ export const TERMINAL_PRESETS: TerminalPreset[] = [
       { type: 'output', text: '✓ OS detected: Linux (Fedora 40)', delay: 300 },
       { type: 'output', text: '✓ OpenCode found: ~/.config/opencode/opencode.jsonc', delay: 300 },
       { type: 'output', text: '✓ Ollama reachable (http://localhost:11434)', delay: 300 },
-      { type: 'output', text: '→ 22 agents available', delay: 200 },
-      { type: 'output', text: '→ 18 skills available', delay: 200 },
+      { type: 'output', text: '→ {AGENTS} agents available', delay: 200 },
+      { type: 'output', text: '→ {SKILLS} skills available', delay: 200 },
       { type: 'success', text: '✅ Système prêt pour la configuration.', delay: 500 }
     ]
   },
@@ -38,11 +38,11 @@ export const TERMINAL_PRESETS: TerminalPreset[] = [
     steps: [
       { type: 'input', text: 'lfa setup --ollama', delay: 500 },
       { type: 'spinner', text: 'Création du répertoire de configuration...', delay: 800 },
-      { type: 'thinking', text: 'Génération de opencode.jsonc avec 22 agents et 18 skills...', delay: 1200 },
+      { type: 'thinking', text: 'Génération de opencode.jsonc avec {AGENTS} agents et {SKILLS} skills...', delay: 1200 },
       { type: 'file-change', text: '📝 Fichier modifié : .config/opencode/opencode.jsonc', delay: 200, filePath: '.config/opencode/opencode.jsonc', fileAction: 'modify' },
       { type: 'output', text: '✓ Config directory created (~/.config/opencode)', delay: 200 },
-      { type: 'output', text: '✓ Agents deployed (22/22)', delay: 200 },
-      { type: 'output', text: '✓ Skills deployed (18/18)', delay: 200 },
+      { type: 'output', text: '✓ Agents deployed ({AGENTS}/{AGENTS})', delay: 200 },
+      { type: 'output', text: '✓ Skills deployed ({SKILLS}/{SKILLS})', delay: 200 },
       { type: 'output', text: '✓ Ollama linked as LLM provider', delay: 200 },
       { type: 'success', text: '✅ Configuration OpenCode terminée en 3.2s.', delay: 500 }
     ]
@@ -61,8 +61,8 @@ export const TERMINAL_PRESETS: TerminalPreset[] = [
       { type: 'output', text: '├─────────────────────────────────────┤', delay: 150 },
       { type: 'output', text: '│  ✓ OpenCode: configuré              │', delay: 150 },
       { type: 'output', text: ' ' + '│  ✓ Ollama: connecté (mistral:7b)      │', delay: 150 },
-      { type: 'output', text: ' ' + '│  ✓ Agents: 22 actifs                │', delay: 150 },
-      { type: 'output', text: '│  ✓ Skills: 18 disponibles           │', delay: 150 },
+      { type: 'output', text: ' │  ✓ Agents: {AGENTS} actifs                │', delay: 150 },
+      { type: 'output', text: '│  ✓ Skills: {SKILLS} disponibles           │', delay: 150 },
       { type: 'output', text: '└─────────────────────────────────────┘', delay: 150 },
       { type: 'success', text: '🚀 Dashboard prêt. Tapez q pour quitter.', delay: 400 }
     ]
@@ -111,7 +111,7 @@ export const FAQ_DATA: FAQItem[] = [
   {
     category: 'Général',
     question: "Qu'est-ce que LFA CLI ?",
-    answer: "LFA CLI est un installateur et configurateur autonome pour l'environnement OpenCode. Il détecte automatiquement votre système, déploie les 22 agents et 18 skills, et configure Ollama comme fournisseur LLM local, le tout en une seule commande."
+    answer: "LFA CLI est un installateur et configurateur autonome pour l'environnement OpenCode. Il détecte automatiquement votre système, déploie les {AGENTS} agents et {SKILLS} skills, et configure Ollama comme fournisseur LLM local, le tout en une seule commande."
   },
   {
     category: 'Général',
@@ -121,7 +121,7 @@ export const FAQ_DATA: FAQItem[] = [
   {
     category: 'Technique',
     question: "LFA CLI modifie-t-il ma configuration OpenCode existante ?",
-    answer: "Oui, LFA CLI enrichit votre fichier `opencode.jsonc` avec 22 agents spécialisés et 18 skills. Il conserve vos réglages existants et ajoute les nouvelles configurations. Utilisez `lfa setup --dry-run` pour prévisualiser les changements sans les appliquer."
+    answer: "Oui, LFA CLI enrichit votre fichier `opencode.jsonc` avec {AGENTS} agents spécialisés et {SKILLS} skills. Il conserve vos réglages existants et ajoute les nouvelles configurations. Utilisez `lfa setup --dry-run` pour prévisualiser les changements sans les appliquer."
   },
   {
     category: 'Technique',
