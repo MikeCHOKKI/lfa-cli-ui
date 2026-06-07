@@ -40,7 +40,9 @@ export default function FAQ() {
               >
                 <button
                   onClick={() => toggleAccordion(idx)}
-                  className="w-full px-5 py-4 flex items-center justify-between text-left focus:outline-none focus:ring-1 focus:ring-lfa-accent/10"
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${idx}`}
+                  className="w-full px-5 py-4 flex items-center justify-between text-left focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-lfa-accent/10"
                 >
                   <div className="flex items-center gap-3">
                     <span className="text-[9px] font-bold font-sans uppercase px-2 py-0.5 rounded bg-lfa-bg text-lfa-accent border border-lfa-accent/20 shrink-0">
@@ -63,7 +65,7 @@ export default function FAQ() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25, ease: 'easeInOut' }}
                     >
-                      <div className="px-5 pb-5 pt-1 text-lfa-text/60 text-xs/relaxed border-t border-lfa-accent/20 bg-lfa-bg/10 text-left">
+                      <div id={`faq-answer-${idx}`} className="px-5 pb-5 pt-1 text-lfa-text/60 text-xs/relaxed border-t border-lfa-accent/20 bg-lfa-bg/10 text-left">
                         {resolve(item.answer)}
                       </div>
                     </motion.div>

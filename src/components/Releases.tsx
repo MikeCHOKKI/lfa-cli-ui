@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useVersion } from '../useVersion'
 
-const REPO = 'lfa-cli/lfa-cli-ai'
+const REPO = 'MikeCHOKKI/lfa-cli-ai'
 
 type Release = {
   tag_name: string
@@ -65,7 +65,15 @@ export default function Releases() {
     fetch('https://api.github.com/repos/MikeCHOKKI/lfa-cli-ai/releases')
       .then((r) => r.json())
       .then((data) => {
-        if (Array.isArray(data)) setReleases(data as Release[])
+        if (Array.isArray(data)) {
+          const valid = data.filter((r): r is Release =>
+            typeof r.tag_name === 'string' &&
+            typeof r.published_at === 'string' &&
+            typeof r.body === 'string' &&
+            typeof r.html_url === 'string'
+          )
+          setReleases(valid)
+        }
       })
       .catch((err) => console.error('Failed to fetch releases:', err))
       .finally(() => setLoading(false))
@@ -81,7 +89,7 @@ export default function Releases() {
       </p>
 
       {loading && (
-        <p className="text-center text-lfa-text/40 text-sm">Chargement...</p>
+        <p className="text-center text-lfa-text/40 text-sm" aria-live="polite">Chargement...</p>
       )}
 
       {!loading && releases.length === 0 && (

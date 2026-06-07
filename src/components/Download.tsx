@@ -11,9 +11,9 @@ const installMethods = [
     ),
   },
   {
-    title: 'Go install',
-    cmd: 'go install github.com/lfa-cli/lfa-cli-ai@latest',
-    note: 'Nécessite Go 1.22+',
+    title: 'Build and install',
+    cmd: 'git clone https://github.com/MikeCHOKKI/lfa-cli-ai.git && cd lfa-cli-ai && make build && sudo cp bin/lfa /usr/local/bin/',
+    note: 'Nécessite Go 1.22+ et make',
     highlight: false,
     icon: (
       <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -23,7 +23,7 @@ const installMethods = [
   },
   {
     title: 'Build from source',
-    cmd: 'git clone https://github.com/lfa-cli/lfa-cli-ai.git && cd lfa-cli-ai && make build',
+    cmd: 'git clone https://github.com/MikeCHOKKI/lfa-cli-ai.git && cd lfa-cli-ai && make build',
     note: 'Binaire dans bin/lfa',
     highlight: false,
     icon: (
