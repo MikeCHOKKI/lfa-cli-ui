@@ -116,7 +116,7 @@ export const FAQ_DATA: FAQItem[] = [
   {
     category: 'Général',
     question: "Comment installer LFA CLI ?",
-    answer: "La méthode la plus rapide est la commande curl : `curl -fsSL https://lfa-cli.vercel.app/install.sh | sh`. Vous pouvez aussi utiliser `go install github.com/lfa-cli/lfa-cli-ai@latest` si vous avez Go 1.22+, ou cloner le dépôt et faire `make build`."
+    answer: "La méthode la plus rapide est la commande curl : `curl -fsSL https://lfa-cli.vercel.app/install.sh | sh`. Vous pouvez aussi cloner le dépôt et faire `make build` (nécessite Go 1.22+)."
   },
   {
     category: 'Technique',
